@@ -9,6 +9,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
+
+
 public class MpesaPaymentConfig extends BaseFoodDomain implements Serializable{
 	
 	private static final long serialVersionUID = -15998096999425119L;

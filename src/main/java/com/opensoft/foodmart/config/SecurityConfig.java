@@ -36,6 +36,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.opensoft.foodmart.services.UserService;
 
 import io.swagger.v3.oas.models.parameters.HeaderParameter;
 
@@ -65,9 +66,8 @@ public class SecurityConfig {
 	CorsConfigurationSource corsFilter() {
 		CorsConfiguration configuration = new CorsConfiguration();
 
-		// Specify the allowed origins (replace "*" with your specific origin)
-		configuration.setAllowedOrigins(
-				Arrays.asList("https://mfood.sasakonnect.net", "http://localhost:3000"));
+//		configuration.setAllowedOrigins(
+//				Arrays.asList("https://mfood.sasakonnect.net", "http://localhost:3000"));
 
 		// Specify the allowed HTTP methods (e.g., GET, POST, PUT, DELETE)
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
@@ -100,10 +100,9 @@ public class SecurityConfig {
 				"/swagger-ui/**", // Swagger UI web interface
 				"/swagger-resources/**",
 				"swagger-config",
-				// Swagger resources like JS and CSS
 				"/webjars/**").permitAll()
 				.requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-				.requestMatchers("/auth/login")
+				.requestMatchers("/auth/user/getOtp","/auth/user/validateOtp","/auth/user/register","/auth/vendor/register")
 				.permitAll()
 				.requestMatchers(HttpMethod.OPTIONS, "/**")
 				.permitAll() // Permit OPTIONS requests
@@ -114,7 +113,7 @@ public class SecurityConfig {
 		http.cors(cors -> cors.disable());
 		http.headers(headers -> headers.disable());
         
-//		http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
 		return http.build();
 

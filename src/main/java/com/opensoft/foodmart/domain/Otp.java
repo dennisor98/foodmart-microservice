@@ -1,10 +1,9 @@
 package com.opensoft.foodmart.domain;
 
 import java.io.Serializable;
+import java.time.Instant;
 
-import com.opensoft.foodmart.enums.OrderSourceType;
-import com.opensoft.foodmart.enums.OrderStatus;
-import com.opensoft.foodmart.enums.OrderType;
+import com.opensoft.foodmart.enums.OtpType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,24 +14,31 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentMethod extends BaseFoodDomain implements Serializable{
-
-	private static final long serialVersionUID = -4953411319514128736L;
+public class Otp extends BaseFoodDomain implements Serializable {
+	private static final long serialVersionUID = 6514527326243106548L;
 	
 	@ManyToOne()
-	@JoinColumn(name="store_id")
-	private Store store;
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	@Column()
-	private String name;
+	private String code;
 	
 	@Column()
-	private Boolean active;
+	private String mobileNumber;
+	
+	@Column()
+	private String otpHash;
+	
+	@Column()
+	private Instant otpExpiryAt;
+	
+	@Column()
+	private OtpType otpType;
 
 }

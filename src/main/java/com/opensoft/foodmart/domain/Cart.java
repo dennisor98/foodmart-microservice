@@ -1,6 +1,7 @@
 package com.opensoft.foodmart.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.opensoft.foodmart.enums.OrderSourceType;
 import com.opensoft.foodmart.enums.OrderStatus;
@@ -21,18 +22,19 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentMethod extends BaseFoodDomain implements Serializable{
-
-	private static final long serialVersionUID = -4953411319514128736L;
+public class Cart extends BaseFoodDomain implements Serializable{
+	private static final long serialVersionUID = 6856212119560819422L;
 	
 	@ManyToOne()
-	@JoinColumn(name="store_id")
-	private Store store;
+	@JoinColumn()
+	private User user;
+
+	@Column()
+	private List<OnSaleItem> items;
 	
 	@Column()
-	private String name;
-	
-	@Column()
-	private Boolean active;
+	private Double totalAmount;
+
+
 
 }

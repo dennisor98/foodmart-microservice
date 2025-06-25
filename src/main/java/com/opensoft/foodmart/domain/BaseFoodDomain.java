@@ -17,8 +17,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.Data;
 
 @MappedSuperclass
+@Data
 public class BaseFoodDomain {
 	@Id
 	@UuidGenerator(style = UuidGenerator.Style.RANDOM)

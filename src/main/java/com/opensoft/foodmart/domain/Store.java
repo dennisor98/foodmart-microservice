@@ -41,6 +41,11 @@ public class Store extends BaseFoodDomain implements Serializable{
 	private Boolean active;
 	
 	@OneToOne()
+	@JoinColumn(name="user_id")
+	@OnDelete(action = OnDeleteAction.SET_NULL)
+	User user;
+	
+	@OneToOne()
 	@JoinColumn(name="address_id")
 	@OnDelete(action = OnDeleteAction.SET_NULL)
 	StoreAddress address;

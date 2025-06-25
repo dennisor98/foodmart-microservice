@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OnSaleItems extends BaseFoodDomain implements Serializable{
+public class OnSaleItem extends BaseFoodDomain implements Serializable{
 	private static final long serialVersionUID = -1172627225709229952L;
 	
 	@OneToOne()

@@ -1,4 +1,4 @@
-package com.opensoft.foodmart;
+package com.opensoft.foodmart.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -27,7 +27,6 @@ public class Payment extends BaseFoodDomain implements Serializable{
 	
 	@OneToOne()
 	@JoinColumn(name="order_id")
-	@OnDelete(action = OnDeleteAction.SET_NULL)
 	Order order;
 	
 	@Column()
